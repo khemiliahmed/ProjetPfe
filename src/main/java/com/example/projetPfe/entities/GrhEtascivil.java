@@ -6,17 +6,22 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "prm_etatscivils")
-public class PrmEtatscivil {
+@Table(name = "grh_etascivils")
+public class GrhEtascivil {
     @Id
+    @ColumnDefault("nextval('grh_etascivils_etcv_uid_seq')")
     @Column(name = "etcv_uid", nullable = false)
     private Integer id;
 
-    @Column(name = "etcv_cod", length = 20)
+    @Column(name = "etcv_cod", nullable = false, length = 20)
     private String etcvCod;
+
+    @Column(name = "etcv_des", length = 100)
+    private String etcvDes;
 
 }

@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 @Getter
 @Setter
@@ -13,10 +14,14 @@ import lombok.Setter;
 @Table(name = "prm_nationalites")
 public class PrmNationalite {
     @Id
-    @Column(name = "ntrl_uid", nullable = false)
+    @ColumnDefault("nextval('prm_nationalites_ntnl_uid_seq')")
+    @Column(name = "ntnl_uid", nullable = false)
     private Integer id;
 
-    @Column(name = "ntrl_cod", length = 20)
-    private String ntrlCod;
+    @Column(name = "ntnl_cod", nullable = false, length = 20)
+    private String ntnlCod;
+
+    @Column(name = "ntnl_des", length = 100)
+    private String ntnlDes;
 
 }

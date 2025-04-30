@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 @Getter
 @Setter
@@ -13,10 +14,20 @@ import lombok.Setter;
 @Table(name = "prm_sites")
 public class PrmSite {
     @Id
+    @ColumnDefault("nextval('prm_sites_site_uid_seq')")
     @Column(name = "site_uid", nullable = false)
     private Integer id;
 
-    @Column(name = "site_cod", length = 20)
+    @Column(name = "site_cod", nullable = false, length = 20)
     private String siteCod;
+
+    @Column(name = "site_des", length = 100)
+    private String siteDes;
+
+    @Column(name = "site_nbr_etage", length = 10)
+    private String siteNbrEtage;
+
+    @Column(name = "site_surface")
+    private Integer siteSurface;
 
 }
